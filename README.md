@@ -13,16 +13,11 @@ Inspirited by old-fashioned games. Made with help of internet.
 	
 ## Technologies
 Project is created with:
-* Python version: 3.8.10
+* Python version: 3.10.2
 	
 ## Setup
-To run this project, install it locally.
+To run this project, install it locally and install python.
 <br>
-What you need, to run project:
-
-```
-install python
-```
 
 ## Ideas
 
