@@ -1,6 +1,4 @@
 import random
-from Classes.magic import Spell
-
 
 class bcolors:  # Create class for colors of font ingame
     HEADER = '\033[95m'
@@ -30,7 +28,10 @@ class Person:  # Create class of character
         self.actions = ["Attack", "Magic", "Items"]
 
     def generate_dmg(self):
-        return random.randrange(self.adl, self.adh)
+        gen_dmg = random.randrange(self.adl, self.adh)
+        if gen_dmg < 0:
+            return 0
+        return gen_dmg
 
     def take_damage(self, dmg):
         self.hp -= dmg
@@ -65,7 +66,6 @@ class Person:  # Create class of character
 
     def choose_action(self):
         i = 1
-        print("\n" + "    " + bcolors.HEADER + self.name + bcolors.ENDC)
         print(bcolors.OKBLUE + "\n    ACTIONS:" + bcolors.ENDC)
         for item in self.actions:
             print("         " + str(i) + ".", item)
@@ -127,8 +127,9 @@ class Person:  # Create class of character
             "                           __________________________________________________ ")
         print(bcolors.BOLD + self.name + "      " +
               current_hp + " |" + bcolors.FAIL + hp_bar + bcolors.ENDC + "|    ")
+        
 
-    def get_stats(self):
+    def get_hero_stats(self):
 
         hp_bar = ""
         hp_ticks = self.hp / self.maxhp * 100 / 4
@@ -176,6 +177,8 @@ class Person:  # Create class of character
             current_mp += mp_string
         else:
             current_mp = mp_string
+            
+        
 
         print(
             "                        _________________________                __________ ")
